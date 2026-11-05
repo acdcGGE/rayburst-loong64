@@ -1,0 +1,307 @@
+{
+  "generated_at": "2026-11-06T00:43:25.433788+08:00",
+  "target_triple": "loongarch64-unknown-linux-gnu",
+  "rustc_used_by_build_scripts": "rustc 1.93.0 (254b59607 2026-01-19)",
+  "os": {
+    "PRETTY_NAME": "Deepin 25",
+    "NAME": "Deepin",
+    "VERSION_CODENAME": "crimson",
+    "ID": "deepin",
+    "HOME_URL": "https://www.deepin.org/",
+    "BUG_REPORT_URL": "https://bbs.deepin.org",
+    "VERSION_ID": "25",
+    "VERSION": "25",
+    "glibc": "ldd (Debian GLIBC 2.38-6deepin30) 2.38",
+    "kernel": "6.18.48-loong64-desktop-rolling",
+    "machine": "loongarch64",
+    "python": "3.12.13"
+  },
+  "toolchain": {
+    "node": {
+      "path": "/home/yuri/WorkBuddy/2026-11-05-23-59-54/.toolchain/node-v24.22.2-linux-loong64/bin/node",
+      "version": "v24.22.2"
+    },
+    "npm": {
+      "path": "/home/yuri/WorkBuddy/2026-11-05-23-59-54/.toolchain/node-v24.22.2-linux-loong64/bin/npm",
+      "version": "11.19.1"
+    },
+    "pnpm": {
+      "path": "/home/yuri/WorkBuddy/2026-11-05-23-59-54/.toolchain/pnpm/node_modules/.bin/pnpm",
+      "version": "11.5.2"
+    },
+    "rustc": {
+      "path": "/home/yuri/.cargo/bin/rustc",
+      "version": "rustc 1.87.0 (17067e9ac 2025-05-09)"
+    },
+    "cargo": {
+      "path": "/home/yuri/.cargo/bin/cargo",
+      "version": "cargo 1.87.0 (99624be96 2025-05-06)"
+    },
+    "rustup": {
+      "path": "/home/yuri/.cargo/bin/rustup",
+      "version": "rustup 1.29.2 (d8c92c676 2026-10-21)"
+    },
+    "gcc": {
+      "path": "/usr/bin/gcc",
+      "version": "gcc (Deepin 12.3.0-17deepin18) 12.3.0"
+    },
+    "g++": {
+      "path": "/usr/bin/g++",
+      "version": "g++ (Deepin 12.3.0-17deepin18) 12.3.0"
+    },
+    "pkg-config": {
+      "path": "/usr/bin/pkg-config",
+      "version": "2.5.1"
+    },
+    "cmake": {
+      "path": "/usr/bin/cmake",
+      "version": "cmake version 3.31.4"
+    },
+    "ninja": {
+      "path": "/usr/bin/ninja",
+      "version": "1.12.1"
+    },
+    "make": {
+      "path": "/usr/bin/make",
+      "version": "GNU Make 4.4.1"
+    },
+    "perl": {
+      "path": "/usr/bin/perl",
+      "version": "This is perl 5, version 36, subversion 0 (v5.36.0) built for loongarch64-linux-gnu-thread-multi"
+    },
+    "git": {
+      "path": "/usr/bin/git",
+      "version": "git version 2.51.0"
+    },
+    "curl": {
+      "path": "/usr/bin/curl",
+      "version": "curl 8.14.1 (loongarch64-unknown-linux-gnu) libcurl/8.14.1 OpenSSL/3.2.4 zlib/1.3.2 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.59.0 librtmp/2.3 OpenLDAP/2.5.13"
+    },
+    "patchelf": {
+      "path": "/usr/bin/patchelf",
+      "version": "patchelf 0.18.0"
+    },
+    "dpkg-deb": {
+      "path": "/usr/bin/dpkg-deb",
+      "version": "Debian dpkg-deb 软件包后端打包程序 1.22.6 (loong64) 版。"
+    },
+    "ar": {
+      "path": "/usr/bin/ar",
+      "version": "GNU ar (GNU Binutils for Deepin) 2.41"
+    }
+  },
+  "rust": {
+    "host_tuple": "loongarch64-unknown-linux-gnu",
+    "toolchains": [
+      "1.80.0-loongarch64-unknown-linux-gnu",
+      "1.85.0-loongarch64-unknown-linux-gnu",
+      "1.87.0-loongarch64-unknown-linux-gnu",
+      "1.93.0-loongarch64-unknown-linux-gnu"
+    ],
+    "installed_targets": [
+      "loongarch64-unknown-linux-gnu"
+    ],
+    "targets_with_loongarch": [
+      "loongarch64-unknown-linux-gnu",
+      "loongarch64-unknown-linux-musl",
+      "loongarch64-unknown-linux-ohos",
+      "loongarch64-unknown-none",
+      "loongarch64-unknown-none-softfloat"
+    ]
+  },
+  "pkg_config": {
+    "webkit2gtk-4.1": {
+      "found": false,
+      "version": null
+    },
+    "javascriptcoregtk-4.1": {
+      "found": false,
+      "version": null
+    },
+    "gtk+-3.0": {
+      "found": false,
+      "version": null
+    },
+    "libsoup-3.0": {
+      "found": false,
+      "version": null
+    },
+    "ayatana-appindicator3-0.1": {
+      "found": false,
+      "version": null
+    },
+    "librsvg-2.0": {
+      "found": true,
+      "version": "2.58.0"
+    }
+  },
+  "native_support": {
+    "@tauri-apps/cli": {
+      "loong64_variant": false,
+      "known_variants": [
+        "linux-x64-gnu",
+        "linux-x64-musl",
+        "linux-arm64-gnu",
+        "linux-arm64-musl",
+        "linux-arm-gnueabihf",
+        "linux-riscv64-gnu",
+        "darwin-x64",
+        "darwin-arm64",
+        "win32-x64-msvc",
+        "win32-ia32-msvc",
+        "win32-arm64-msvc"
+      ],
+      "workaround": "cargo install tauri-cli --version 2.12.2 --locked"
+    },
+    "@esbuild/linux-loong64": {
+      "loong64_variant": true,
+      "version": "0.25.12"
+    },
+    "@rollup/rollup-linux-loong64-gnu": {
+      "loong64_variant": true,
+      "version": "4.59.0"
+    }
+  },
+  "sources": {
+    "rayburst": {
+      "path": "/home/yuri/WorkBuddy/2026-11-05-23-59-54/rayburst",
+      "exists": true,
+      "externalBin": [
+        "binaries/aria2-next",
+        "generated-binaries/rayburst-browser-launcher"
+      ],
+      "bundle_targets": "all",
+      "packageManager": "pnpm@11.5.2",
+      "version": "4.1.2-beta.2",
+      "shipped_sidecars": [
+        "aria2-next-aarch64-apple-darwin",
+        "aria2-next-aarch64-pc-windows-msvc.exe",
+        "aria2-next-aarch64-unknown-linux-gnu",
+        "aria2-next-x86_64-apple-darwin",
+        "aria2-next-x86_64-pc-windows-msvc.exe",
+        "aria2-next-x86_64-unknown-linux-gnu"
+      ],
+      "loong64_sidecar_present": false,
+      "generated_binaries": [
+        "README.md",
+        "rayburst-browser-launcher-loongarch64-unknown-linux-gnu"
+      ],
+      "lockfile_version": "lockfileVersion: '9.0'",
+      "supportedArchitectures_cpu": [
+        "- x64",
+        "    - arm64",
+        "    - loong64"
+      ],
+      "loong64_cpu_allowed": true,
+      "loong64_native_pkgs_installed": [
+        "@rollup+rollup-linux-loong64-gnu@4.59.0"
+      ],
+      "dist_built": false,
+      "node_modules_present": true
+    },
+    "aria2_next": {
+      "path": "/home/yuri/WorkBuddy/2026-11-05-23-59-54/aria2-next",
+      "exists": true,
+      "third_party": [
+        "boost",
+        "curl",
+        "doctest",
+        "expat",
+        "ffmpeg",
+        "gpac",
+        "libssh2",
+        "libtorrent",
+        "nghttp2",
+        "openssl",
+        "spdlog",
+        "sqlite",
+        "zlib"
+      ],
+      "openssl_targets": [
+        "set(ARIA2_OPENSSL_TARGET android-arm64)",
+        "set(ARIA2_OPENSSL_TARGET darwin64-arm64-cc)",
+        "set(ARIA2_OPENSSL_TARGET darwin64-x86_64-cc)",
+        "set(ARIA2_OPENSSL_TARGET linux-aarch64)",
+        "set(ARIA2_OPENSSL_TARGET linux-x86_64)",
+        "set(ARIA2_OPENSSL_TARGET linux64-loongarch64)",
+        "set(ARIA2_OPENSSL_TARGET mingw-arm64)",
+        "set(ARIA2_OPENSSL_TARGET mingw64)"
+      ],
+      "loongarch_branch_present": true,
+      "configured": true
+    }
+  },
+  "gaps": [
+    {
+      "id": "node>=22.13-for-pnpm11",
+      "severity": "blocker",
+      "status": "resolved",
+      "evidence": "system node=v24.22.2, pnpm=11.5.2, packageManager=pnpm@11.5.2",
+      "remedy": "install loong64/node userland toolchain (scripts/01-toolchain.sh)",
+      "detail": "pnpm 11 requires node:sqlite (Node >= 22.13); apt on Deepin 25 ships Node 20 only"
+    },
+    {
+      "id": "pnpm-supportedArchitectures-cpu",
+      "severity": "blocker",
+      "status": "resolved",
+      "evidence": "pnpm-workspace.yaml cpu=['- x64', '    - arm64', '    - loong64']; installed loong64 native pkgs=['@rollup+rollup-linux-loong64-gnu@4.59.0']; vite build fails with 'Cannot find module @rollup/rollup-linux-loong64-gnu' otherwise",
+      "remedy": "git apply patches/rayburst-pnpm-workspace-loong64.patch, then re-run pnpm install (a fresh install / lockfile re-resolution may be needed)"
+    },
+    {
+      "id": "tauri-cli-native-binary",
+      "severity": "blocker",
+      "status": "open",
+      "resolution": null,
+      "evidence": "@tauri-apps/cli 2.12.2 optionalDependencies has no loong64 variant; local cargo-tauri=absent, shim=present",
+      "remedy": "build tauri-cli from crates.io with cargo +1.93.0, shim node_modules/.bin/tauri"
+    },
+    {
+      "id": "rustc>=1.90-for-tauri-cli-2.12",
+      "severity": "blocker",
+      "status": "resolved",
+      "evidence": "active rustc=rustc 1.87.0 (17067e9ac 2025-05-09); toolchains=['1.80.0-loongarch64-unknown-linux-gnu', '1.85.0-loongarch64-unknown-linux-gnu', '1.87.0-loongarch64-unknown-linux-gnu', '1.93.0-loongarch64-unknown-linux-gnu']; tauri-cli 2.12.2 requires rustc >= 1.90 (1.11.5 supports 1.77.2)",
+      "remedy": "use `cargo +1.93.0` / rustup override for the port"
+    },
+    {
+      "id": "webkit2gtk-dev-headers",
+      "severity": "blocker",
+      "status": "open",
+      "evidence": "missing pkg-config modules: ['webkit2gtk-4.1', 'javascriptcoregtk-4.1', 'gtk+-3.0', 'libsoup-3.0', 'ayatana-appindicator3-0.1']; apt simulation requires 45 packages",
+      "remedy": "sudo apt install libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf xdg-utils"
+    },
+    {
+      "id": "aria2-next-loong64-sidecar",
+      "severity": "blocker",
+      "status": "open",
+      "evidence": "shipped sidecars=['aria2-next-aarch64-apple-darwin', 'aria2-next-aarch64-pc-windows-msvc.exe', 'aria2-next-aarch64-unknown-linux-gnu', 'aria2-next-x86_64-apple-darwin', 'aria2-next-x86_64-pc-windows-msvc.exe', 'aria2-next-x86_64-unknown-linux-gnu']; tauri needs binaries/aria2-next-loongarch64-unknown-linux-gnu",
+      "remedy": "build aria2-next superbuild with patches/aria2-next-loongarch64-openssl.patch"
+    },
+    {
+      "id": "aria2-next-openssl-target",
+      "severity": "blocker",
+      "status": "resolved",
+      "evidence": "cmake/superbuild/Dependencies.cmake falls back to linux-x86_64 for CMAKE_SYSTEM_PROCESSOR=loongarch64; OpenSSL 3.5.6 provides linux64-loongarch64",
+      "remedy": "git apply patches/aria2-next-loongarch64-openssl.patch"
+    },
+    {
+      "id": "tauri-bundler-deb-arch",
+      "severity": "blocker",
+      "status": "open",
+      "resolution": null,
+      "evidence": "tauri-bundler 2.10.2 Arch enum has no LoongArch64; binary_arch() panics on loongarch64-*; debian.rs/rpm.rs reject the target",
+      "remedy": "build with --no-bundle and create the .deb with scripts/06-package-deb.sh (Architecture: loong64). Upstream patch is documented in PORTING.md"
+    },
+    {
+      "id": "updater-endpoints",
+      "severity": "warning",
+      "status": "open",
+      "evidence": "tauri.conf.json updater endpoint points at upstream releases which have no loong64 artifacts",
+      "remedy": "ship a loong64-specific config with createUpdaterArtifacts=false / disable updater, or host a separate channel"
+    }
+  ],
+  "summary": {
+    "blockers_open": 4,
+    "blockers_resolved": 4,
+    "warnings": 1
+  }
+}

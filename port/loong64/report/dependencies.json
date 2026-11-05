@@ -1,0 +1,333 @@
+{
+  "generated_at": "2026-11-06T01:30:07+08:00",
+  "host": {
+    "arch": "loongarch64",
+    "glibc": "ldd (Debian GLIBC 2.38-6deepin30) 2.38"
+  },
+  "blocking_pkgconfig_modules": {
+    "webkit2gtk-4.1": {
+      "package": "libwebkit2gtk-4.1-dev",
+      "present": true,
+      "dpkg_version": null
+    },
+    "javascriptcoregtk-4.1": {
+      "package": "libjavascriptcoregtk-4.1-dev",
+      "present": true,
+      "dpkg_version": null
+    },
+    "gtk+-3.0": {
+      "package": "libgtk-3-dev",
+      "present": true,
+      "dpkg_version": ""
+    },
+    "libsoup-3.0": {
+      "package": "libsoup-3.0-dev",
+      "present": true,
+      "dpkg_version": null
+    },
+    "ayatana-appindicator3-0.1": {
+      "package": "libayatana-appindicator3-dev",
+      "present": true,
+      "dpkg_version": null
+    }
+  },
+  "already_installed": {
+    "libglib2.0-dev": "2.84.4-3deepin3",
+    "libcairo2-dev": "1.18.4-3",
+    "libpango1.0-dev": "1.56.0-3",
+    "libgdk-pixbuf-2.0-dev": "2.42.12+dfsg-5deepin1",
+    "librsvg2-dev": "2.58.0+dfsg-1",
+    "patchelf": "0.18.0-1",
+    "xdg-utils": "1.2.1-2deepin2",
+    "dpkg-dev": "1.22.6deepin10",
+    "libgtk-3-0": "3.24.41-1deepin8"
+  },
+  "missing_runtime_libs": [],
+  "top_level_install_command": "sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libsoup-3.0-dev libayatana-appindicator3-dev librsvg2-dev patchelf xdg-utils dpkg-dev",
+  "apt_resolution": {
+    "packages_to_install": 45,
+    "total_download_bytes": 53608132,
+    "groups": {
+      "dev-headers": [
+        {
+          "package": "libatk-bridge2.0-dev",
+          "size": 10,
+          "pkgconfig_modules": [
+            "atk-bridge-2.0.pc"
+          ]
+        },
+        {
+          "package": "libatk1.0-dev",
+          "size": 104,
+          "pkgconfig_modules": [
+            "atk.pc"
+          ]
+        },
+        {
+          "package": "libatspi2.0-dev",
+          "size": 82,
+          "pkgconfig_modules": [
+            "atspi-2.pc"
+          ]
+        },
+        {
+          "package": "libayatana-appindicator3-dev",
+          "size": 19,
+          "pkgconfig_modules": [
+            "ayatana-appindicator3-0.1.pc"
+          ]
+        },
+        {
+          "package": "libayatana-ido3-dev",
+          "size": 17,
+          "pkgconfig_modules": [
+            "libayatana-ido3-0.4.pc"
+          ]
+        },
+        {
+          "package": "libayatana-indicator3-dev",
+          "size": 10,
+          "pkgconfig_modules": [
+            "ayatana-indicator3-0.4.pc"
+          ]
+        },
+        {
+          "package": "libcloudproviders-dev",
+          "size": 16,
+          "pkgconfig_modules": [
+            "cloudproviders.pc"
+          ]
+        },
+        {
+          "package": "libdbus-1-dev",
+          "size": 462,
+          "pkgconfig_modules": [
+            "dbus-1.pc"
+          ]
+        },
+        {
+          "package": "libdbusmenu-glib-dev",
+          "size": 112,
+          "pkgconfig_modules": [
+            "dbusmenu-glib-0.4.pc"
+          ]
+        },
+        {
+          "package": "libgtk-3-dev",
+          "size": 1101,
+          "pkgconfig_modules": [
+            "gdk-3.0.pc",
+            "gdk-broadway-3.0.pc",
+            "gdk-wayland-3.0.pc",
+            "gdk-x11-3.0.pc",
+            "gtk+-3.0.pc",
+            "gtk+-broadway-3.0.pc",
+            "gtk+-unix-print-3.0.pc",
+            "gtk+-wayland-3.0.pc",
+            "gtk+-x11-3.0.pc"
+          ]
+        },
+        {
+          "package": "libgtk2.0-dev",
+          "size": 779,
+          "pkgconfig_modules": [
+            "gdk-2.0.pc",
+            "gdk-x11-2.0.pc",
+            "gtk+-2.0.pc",
+            "gtk+-unix-print-2.0.pc",
+            "gtk+-x11-2.0.pc"
+          ]
+        },
+        {
+          "package": "libjavascriptcoregtk-4.1-dev",
+          "size": 83,
+          "pkgconfig_modules": [
+            "javascriptcoregtk-4.1.pc"
+          ]
+        },
+        {
+          "package": "libsoup-3.0-dev",
+          "size": 113,
+          "pkgconfig_modules": [
+            "libsoup-3.0.pc"
+          ]
+        },
+        {
+          "package": "libsqlite3-dev",
+          "size": 2373,
+          "pkgconfig_modules": [
+            "sqlite3.pc"
+          ]
+        },
+        {
+          "package": "libwebkit2gtk-4.1-dev",
+          "size": 306,
+          "pkgconfig_modules": [
+            "webkit2gtk-4.1.pc",
+            "webkit2gtk-web-extension-4.1.pc"
+          ]
+        },
+        {
+          "package": "libxtst-dev",
+          "size": 37,
+          "pkgconfig_modules": [
+            "xtst.pc"
+          ]
+        }
+      ],
+      "introspection-data": [
+        {
+          "package": "gir1.2-atk-1.0",
+          "size": 26,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-atspi-2.0",
+          "size": 25,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-ayatanaappindicator3-0.1",
+          "size": 9,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-ayatanaido3-0.4",
+          "size": 9,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-cloudproviders-0.3.0",
+          "size": 6,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-dbusmenu-glib-0.4",
+          "size": 7,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-gtk-2.0",
+          "size": 175,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-gtk-3.0",
+          "size": 217,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-javascriptcoregtk-4.1",
+          "size": 52,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-soup-3.0",
+          "size": 29,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "gir1.2-webkit2-4.1",
+          "size": 107,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libsoup-3.0-common",
+          "size": 65,
+          "pkgconfig_modules": []
+        }
+      ],
+      "runtime-libraries": [
+        {
+          "package": "gstreamer1.0-plugins-good",
+          "size": 2093,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libaa1",
+          "size": 47,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libavc1394-0",
+          "size": 17,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libcaca0",
+          "size": 195,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libdv4",
+          "size": 61,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libflite1",
+          "size": 12632,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libgpm2",
+          "size": 13,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libhyphen0",
+          "size": 29,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libjavascriptcoregtk-4.1-0",
+          "size": 3961,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libmanette-0.2-0",
+          "size": 27,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libseccomp2",
+          "size": 55,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libshout3",
+          "size": 49,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libsoup-3.0-0",
+          "size": 277,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libwebkit2gtk-4.1-0",
+          "size": 26350,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "libxml2-utils",
+          "size": 98,
+          "pkgconfig_modules": []
+        }
+      ],
+      "sandbox-tools": [
+        {
+          "package": "bubblewrap",
+          "size": 51,
+          "pkgconfig_modules": []
+        },
+        {
+          "package": "xdg-dbus-proxy",
+          "size": 24,
+          "pkgconfig_modules": []
+        }
+      ]
+    }
+  },
+  "status": "installed",
+  "note": "All 45 packages were installed by the operator; pkg-config and runtime libs are present."
+}
