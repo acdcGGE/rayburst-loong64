@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T00:43:25.433788+08:00",
+  "generated_at": "2026-11-06T02:19:47.504193+08:00",
   "target_triple": "loongarch64-unknown-linux-gnu",
   "rustc_used_by_build_scripts": "rustc 1.93.0 (254b59607 2026-01-19)",
   "os": {
@@ -111,24 +111,24 @@
   },
   "pkg_config": {
     "webkit2gtk-4.1": {
-      "found": false,
-      "version": null
+      "found": true,
+      "version": "2.52.5"
     },
     "javascriptcoregtk-4.1": {
-      "found": false,
-      "version": null
+      "found": true,
+      "version": "2.52.5"
     },
     "gtk+-3.0": {
-      "found": false,
-      "version": null
+      "found": true,
+      "version": "3.24.41"
     },
     "libsoup-3.0": {
-      "found": false,
-      "version": null
+      "found": true,
+      "version": "3.6.5"
     },
     "ayatana-appindicator3-0.1": {
-      "found": false,
-      "version": null
+      "found": true,
+      "version": "0.5.94"
     },
     "librsvg-2.0": {
       "found": true,
@@ -177,11 +177,12 @@
         "aria2-next-aarch64-apple-darwin",
         "aria2-next-aarch64-pc-windows-msvc.exe",
         "aria2-next-aarch64-unknown-linux-gnu",
+        "aria2-next-loongarch64-unknown-linux-gnu",
         "aria2-next-x86_64-apple-darwin",
         "aria2-next-x86_64-pc-windows-msvc.exe",
         "aria2-next-x86_64-unknown-linux-gnu"
       ],
-      "loong64_sidecar_present": false,
+      "loong64_sidecar_present": true,
       "generated_binaries": [
         "README.md",
         "rayburst-browser-launcher-loongarch64-unknown-linux-gnu"
@@ -196,7 +197,7 @@
       "loong64_native_pkgs_installed": [
         "@rollup+rollup-linux-loong64-gnu@4.59.0"
       ],
-      "dist_built": false,
+      "dist_built": true,
       "node_modules_present": true
     },
     "aria2_next": {
@@ -250,9 +251,9 @@
     {
       "id": "tauri-cli-native-binary",
       "severity": "blocker",
-      "status": "open",
-      "resolution": null,
-      "evidence": "@tauri-apps/cli 2.12.2 optionalDependencies has no loong64 variant; local cargo-tauri=absent, shim=present",
+      "status": "resolved",
+      "resolution": "workaround",
+      "evidence": "@tauri-apps/cli 2.12.2 optionalDependencies has no loong64 variant; local cargo-tauri=present, shim=present",
       "remedy": "build tauri-cli from crates.io with cargo +1.93.0, shim node_modules/.bin/tauri"
     },
     {
@@ -265,15 +266,15 @@
     {
       "id": "webkit2gtk-dev-headers",
       "severity": "blocker",
-      "status": "open",
-      "evidence": "missing pkg-config modules: ['webkit2gtk-4.1', 'javascriptcoregtk-4.1', 'gtk+-3.0', 'libsoup-3.0', 'ayatana-appindicator3-0.1']; apt simulation requires 45 packages",
+      "status": "resolved",
+      "evidence": "missing pkg-config modules: []; apt simulation requires 45 packages",
       "remedy": "sudo apt install libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf xdg-utils"
     },
     {
       "id": "aria2-next-loong64-sidecar",
       "severity": "blocker",
-      "status": "open",
-      "evidence": "shipped sidecars=['aria2-next-aarch64-apple-darwin', 'aria2-next-aarch64-pc-windows-msvc.exe', 'aria2-next-aarch64-unknown-linux-gnu', 'aria2-next-x86_64-apple-darwin', 'aria2-next-x86_64-pc-windows-msvc.exe', 'aria2-next-x86_64-unknown-linux-gnu']; tauri needs binaries/aria2-next-loongarch64-unknown-linux-gnu",
+      "status": "resolved",
+      "evidence": "shipped sidecars=['aria2-next-aarch64-apple-darwin', 'aria2-next-aarch64-pc-windows-msvc.exe', 'aria2-next-aarch64-unknown-linux-gnu', 'aria2-next-loongarch64-unknown-linux-gnu', 'aria2-next-x86_64-apple-darwin', 'aria2-next-x86_64-pc-windows-msvc.exe', 'aria2-next-x86_64-unknown-linux-gnu']; tauri needs binaries/aria2-next-loongarch64-unknown-linux-gnu",
       "remedy": "build aria2-next superbuild with patches/aria2-next-loongarch64-openssl.patch"
     },
     {
@@ -286,8 +287,8 @@
     {
       "id": "tauri-bundler-deb-arch",
       "severity": "blocker",
-      "status": "open",
-      "resolution": null,
+      "status": "resolved",
+      "resolution": "workaround",
       "evidence": "tauri-bundler 2.10.2 Arch enum has no LoongArch64; binary_arch() panics on loongarch64-*; debian.rs/rpm.rs reject the target",
       "remedy": "build with --no-bundle and create the .deb with scripts/06-package-deb.sh (Architecture: loong64). Upstream patch is documented in PORTING.md"
     },
@@ -300,8 +301,8 @@
     }
   ],
   "summary": {
-    "blockers_open": 4,
-    "blockers_resolved": 4,
+    "blockers_open": 0,
+    "blockers_resolved": 8,
     "warnings": 1
   }
 }

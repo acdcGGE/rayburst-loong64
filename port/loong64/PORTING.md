@@ -171,7 +171,7 @@ bundle 阶段被调用；全仓库 grep 确认 build 路径没有其他 `binary_
 | aria2-next superbuild | `-j4` | ✅ 11 个依赖 + 引擎本体全部完成；`aria2-next --version` → 3.0.10，ELF 64-bit LSB PIE / LoongArch / 379 MiB（未 strip） |
 | `04-engine.sh` | 增量 | ✅ sidecar 落位 `binaries/aria2-next-loongarch64-unknown-linux-gnu` |
 | `06-package-deb.sh` 布局自测 | 占位二进制 | ✅ 生成 `Architecture: loong64` 的 deb，`dpkg-deb -c` 核对 `/usr/bin/*` 与 `/usr/lib/Rayburst/*` 布局与 tauri-bundler 一致；自测产物已清除 |
-| Rust 主程序 / 真实 deb | 系统 WebKitGTK 4.1 | 🔄 `05-build.sh` 增量重链中 |
+| Rust 主程序 / 真实 deb | 系统 WebKitGTK 4.1，增量 12m53s | ✅ `rayburst` 43 MiB （ELF LoongArch PIE，`ldd` 无缺失库）；`rayburst_4.1.2-beta.2_loong64.deb` 90 MiB，`dpkg-deb -I` 确认 `Architecture: loong64`，`dpkg-deb -c` 布局与 tauri-bundler 一致 |
 
 详细结构化结果由 `python3 tools/probe.py` 生成到 `report/probe.json`；
 系统依赖的 45 个包分组与安装命令记录在 `report/dependencies.json`。

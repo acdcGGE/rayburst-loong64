@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T01:30:07+08:00",
+  "generated_at": "2026-11-06T02:19:47.399270+08:00",
   "host": {
     "arch": "loongarch64",
     "glibc": "ldd (Debian GLIBC 2.38-6deepin30) 2.38"
@@ -8,27 +8,32 @@
     "webkit2gtk-4.1": {
       "package": "libwebkit2gtk-4.1-dev",
       "present": true,
-      "dpkg_version": null
+      "dpkg_version": "2.52.5-1~deb13u1deepin1",
+      "pkgconfig_version": "2.52.5"
     },
     "javascriptcoregtk-4.1": {
       "package": "libjavascriptcoregtk-4.1-dev",
       "present": true,
-      "dpkg_version": null
+      "dpkg_version": "2.52.5-1~deb13u1deepin1",
+      "pkgconfig_version": "2.52.5"
     },
     "gtk+-3.0": {
       "package": "libgtk-3-dev",
       "present": true,
-      "dpkg_version": ""
+      "dpkg_version": "3.24.41-1deepin8",
+      "pkgconfig_version": "3.24.41"
     },
     "libsoup-3.0": {
       "package": "libsoup-3.0-dev",
       "present": true,
-      "dpkg_version": null
+      "dpkg_version": "3.6.5-8deepin1",
+      "pkgconfig_version": "3.6.5"
     },
     "ayatana-appindicator3-0.1": {
       "package": "libayatana-appindicator3-dev",
       "present": true,
-      "dpkg_version": null
+      "dpkg_version": "0.5.94-1",
+      "pkgconfig_version": "0.5.94"
     }
   },
   "already_installed": {
@@ -329,5 +334,5 @@
     }
   },
   "status": "installed",
-  "note": "All 45 packages were installed by the operator; pkg-config and runtime libs are present."
+  "note": "All 45 packages installed by the operator; pkg-config modules, headers and runtime libs are present."
 }
