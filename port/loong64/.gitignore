@@ -4,3 +4,4 @@ dist/
 .toolchain/
 report/*.log
 *.deb
+*.pkg.tar.zst
