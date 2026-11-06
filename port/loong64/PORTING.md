@@ -172,8 +172,51 @@ bundle 阶段被调用；全仓库 grep 确认 build 路径没有其他 `binary_
 | `04-engine.sh` | 增量 | ✅ sidecar 落位 `binaries/aria2-next-loongarch64-unknown-linux-gnu` |
 | `06-package-deb.sh` 布局自测 | 占位二进制 | ✅ 生成 `Architecture: loong64` 的 deb，`dpkg-deb -c` 核对 `/usr/bin/*` 与 `/usr/lib/Rayburst/*` 布局与 tauri-bundler 一致；自测产物已清除 |
 | Rust 主程序 / 真实 deb | 系统 WebKitGTK 4.1，增量 12m53s | ✅ `rayburst` 43 MiB （ELF LoongArch PIE，`ldd` 无缺失库）；`rayburst_4.1.2-beta.2_loong64.deb` 90 MiB，`dpkg-deb -I` 确认 `Architecture: loong64`，`dpkg-deb -c` 布局与 tauri-bundler 一致 |
+| `07-package-arch.sh` | bsdtar 3.7.4 + zstd 1.5.7，21s | ✅ `rayburst-4.1.2_beta.2-1-loong64.pkg.tar.zst` 120 MiB；`.PKGINFO` / `.MTREE` 齐全，33 个条目全部 root:root 755/644 |
+| 真实 pacman 校验 | Loong Arch `pacman 7.1.0 / libalpm 16.0.1` | ✅ `-Qip` 正确解析全部字段；`-Qlp` 31 项；`-Qkp` → `31 total files, 0 missing files`（0 warning）；与 deb 的 13 个 payload 文件 sha256 全同 |
+
+### 4.1 Arch Linux 包与真实 pacman 校验
+
+`07-package-arch.sh` 不重新编译，复用 `dist/deb-stage` 的 payload，用
+`bsdtar`(libarchive 3.7.4) + `zstd` 生成 pacman 归档。三处格式适配：
+
+1. **版本**：上游 `4.1.2-beta.2` 的 `-` 在 `pkgver` 中非法 → `4.1.2_beta.2`，
+   `pkgrel=1`，文件名 `rayburst-4.1.2_beta.2-1-loong64.pkg.tar.zst`。
+2. **架构**：Loong Arch Linux 的 `pacman-use-loong64.patch` 把
+   `un.machine=loongarch64` 映射成 CARCH `loong64`（与 deb 同名，但来源不同）。
+3. **依赖名**：deb 的 `libwebkit2gtk-4.1-0` 等 → Arch 的 `webkit2gtk-4.1` 等；
+   只列 `ldd` 可见的直接依赖，去掉 `libayatana-appindicator3-1`
+   （Rust `ksni` 走 D-Bus，不链接该库）。
+
+`.PKGINFO` 必需；`.MTREE` 用 makepkg 同款关键字集
+（`!all,use-set,type,uid,gid,mode,time,size,link,sha256digest`）生成并 gzip；
+`.BUILDINFO` 有意省略——它描述 PKGBUILD 构建环境，本配方无此环境，
+pacman 也不要求。全部归档条目 root:root。
+
+**校验证据**（不是格式推断）：从 Loong Arch Linux 镜像取官方
+`pacman 7.1.0 / libalpm 16.0.1` 的 loong64 二进制，补齐 libgpgme / libassuan，
+用系统 `libgpg-error` 绕开本机 glibc 2.38 < 2.42 的差异，在本机实跑：
+
+```
+$ pacman -Qip rayburst-4.1.2_beta.2-1-loong64.pkg.tar.zst
+Name            : rayburst
+Version         : 4.1.2_beta.2-1
+Architecture    : loong64
+Depends On      : webkit2gtk-4.1  gtk3  libsoup3  librsvg  libglvnd  hicolor-icon-theme
+Compressed Size : 119.18 MiB
+Installed Size  : 430.08 MiB
+
+$ pacman -Qlp <pkg> | wc -l
+31
+$ pacman -Qkp <pkg>          # 解包到 fake root 后按 .MTREE 全量校验
+rayburst: 31 total files, 0 missing files
+```
+
+另有 `zstd -t` 通过；解包后与 deb-stage 的 13 个文件 sha256 逐个比对全部一致；
+三个 ELF 均为 LoongArch PIE，`ldd` 无缺失库。
 
 详细结构化结果由 `python3 tools/probe.py` 生成到 `report/probe.json`；
+两个发布包的尺寸 / SHA256 / 元信息记录在 `report/packages.json`；
 系统依赖的 45 个包分组与安装命令记录在 `report/dependencies.json`。
 所有长时编译（tauri-cli、aria2-next superbuild）都只需跑一次，产物留在
 `.toolchain/` 与 `aria2-next/build/`，后续 `build-all.sh` 会命中缓存。
@@ -209,8 +252,10 @@ bundle 阶段被调用；全仓库 grep 确认 build 路径没有其他 `binary_
 3. **aria2-next 全量 superbuild 耗时**：4 核 3A5000 量级上约 1–2 小时；
    产物是链接了 vendored 依赖的单文件，未 strip 时 379 MiB（对比上游预编译
    sidecar 约 18 MiB，发布前建议 `strip` 或加 `-s`）。
-4. **分发**：deb 的 `Depends` 按 Deepin 25 的包名写死；换发行版需按实际包名
-   调整 `06-package-deb.sh`。
+4. **分发**：deb 的 `Depends` 按 Deepin 25 包名写死，Arch 包的 `depend` 按
+   Arch 官方包名写死；换发行版/移植仓库包名不同时，改 `06-package-deb.sh`
+   或设 `ARCH_DEPENDS`。Arch 包未在真实 Loong Arch Linux 上 `pacman -U` 实装
+   （本机是 Deepin），但已用其官方 pacman/libalpm 二进制完成 `-Qip/-Qlp/-Qkp` 校验。
 5. **上游同步**：补丁基于 rayburst 4.1.2-beta.2 / tauri-cli 2.12.2 /
    tauri-bundler 2.10.2 / aria2-next 3.0.10。升级后需重新跑 `probe.py` 对比。
 
@@ -222,7 +267,7 @@ bundle 阶段被调用；全仓库 grep 确认 build 路径没有其他 `binary_
 `pnpm-workspace.yaml` 加一行 `loong64`，`aria2-next` 的 OpenSSL target 加 5 行分支。
 其余工作是补 **三块发行侧缺口** —— Node/pnpm 的 loong64 运行时、原生 tauri-cli、
 aria2-next sidecar —— 并绕过 **tauri-bundler 不认识 LoongArch64** 这一处上游限制
-（`--no-bundle` + 手工打 `loong64` deb）。唯一需要 root 的一步是
+（`--no-bundle` + 手工打 `loong64` deb 与 Arch `.pkg.tar.zst`）。唯一需要 root 的一步是
 `sudo apt install` 装 WebKitGTK 开发包，操作者已经完成；之后
-`./scripts/build-all.sh` 即可端到端产出安装包。尚未验证的只剩龙芯桌面会话里
+`./scripts/build-all.sh` 即可端到端产出两种安装包。尚未验证的只剩龙芯桌面会话里
 的运行期行为（托盘 / updater / deep-link / 软件渲染）。

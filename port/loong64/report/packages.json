@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-11-06T09:16:05.367106+08:00",
+  "host": {
+    "arch": "loongarch64",
+    "glibc": "ldd (Debian GLIBC 2.38-6deepin30) 2.38"
+  },
+  "upstream_version": "4.1.2-beta.2",
+  "note": "Both packages are built from the same dist/deb-stage payload; all 13 payload files have identical sha256.",
+  "payload": {
+    "tree": "dist/deb-stage/usr",
+    "files": 13,
+    "sha256_manifest": "verified equal between deb-stage, extracted arch payload and .MTREE"
+  },
+  "packages": [
+    {
+      "format": "deb",
+      "filename": "rayburst_4.1.2-beta.2_loong64.deb",
+      "size_bytes": 93959500,
+      "sha256": "e446c1804dc51ee9415057940f3e39095ba6e9458d5da2a619f8398455596e2d",
+      "architecture": "loong64",
+      "version": "4.1.2-beta.2",
+      "archive_entries": 32,
+      "depends": [
+        "libwebkit2gtk-4.1-0",
+        "libgtk-3-0",
+        "libsoup-3.0-0",
+        "libayatana-appindicator3-1",
+        "librsvg2-2",
+        "libgl1",
+        "libgbm1"
+      ],
+      "verified_by": "dpkg-deb -I/-c"
+    },
+    {
+      "format": "arch-pkg",
+      "filename": "rayburst-4.1.2_beta.2-1-loong64.pkg.tar.zst",
+      "size_bytes": 124969249,
+      "sha256": "a166c164606ca58b3d93b9b4922db65b0e635ef67f7fe94041985fed4118370c",
+      "pkgname": "rayburst",
+      "pkgver": "4.1.2_beta.2-1",
+      "architecture": "loong64",
+      "license": [
+        "MIT",
+        "GPL-2.0-or-later"
+      ],
+      "depends": [
+        "webkit2gtk-4.1",
+        "gtk3",
+        "libsoup3",
+        "librsvg",
+        "libglvnd",
+        "hicolor-icon-theme"
+      ],
+      "installed_size_bytes": 450975110,
+      "archive_entries": 33,
+      "metadata_files": [
+        ".PKGINFO",
+        ".MTREE"
+      ],
+      "buildinfo": null,
+      "buildinfo_note": "Not generated: no PKGBUILD/makepkg build environment; libalpm does not require it.",
+      "verified_by": {
+        "pacman": "7.1.0 / libalpm 16.0.1 (official Loong Arch Linux loong64 binary)",
+        "pacman_-Qip": "parsed all fields: name/version/arch/depends/license/size/builddate",
+        "pacman_-Qlp": 31,
+        "pacman_-Qkp": "31 total files, 0 missing files (0 warnings)",
+        "zstd_-t": "ok",
+        "payload_sha256_match_with_deb": true,
+        "elf": "ELF 64-bit LSB PIE / LoongArch, ldd has no missing libs"
+      }
+    }
+  ]
+}

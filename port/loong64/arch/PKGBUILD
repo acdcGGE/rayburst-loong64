@@ -1,0 +1,38 @@
+# Equivalent Arch-style recipe for Loong Arch Linux (CARCH=loong64).
+#
+# This is a TEMPLATE for maintainers who want makepkg to produce the package
+# (with .BUILDINFO etc.) from the same pre-built payload. It has NOT been
+# exercised on the Deepin build host, which has no pacman/makepkg. The
+# authoritative, verified packer is scripts/07-package-arch.sh.
+#
+# Usage on a Loong Arch Linux machine:
+#   _stage=/path/to/rayburst-loong64/dist/deb-stage/usr makepkg -s
+# or copy the payload next to this file and leave _stage at its default.
+pkgname=rayburst
+pkgver=4.1.2_beta.2
+pkgrel=1
+pkgdesc="Modern download manager built with Tauri 2 (LoongArch64 port)"
+arch=('loong64')
+url="https://github.com/AnInsomniacy/rayburst"
+license=('MIT' 'GPL-2.0-or-later')
+depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'librsvg' 'libglvnd' 'hicolor-icon-theme')
+options=('!strip' '!debug')
+source=()
+sha256sums=()
+
+# 06-package-deb.sh stages the tauri-bundler Linux layout here; 07 reuses it.
+_stage="${_stage:-$PWD/../dist/deb-stage/usr}"
+
+package() {
+  test -x "$_stage/bin/rayburst" || {
+    echo "Set _stage to the built payload tree (see scripts/07-package-arch.sh)" >&2
+    return 1
+  }
+  install -dm755 "$pkgdir/usr"
+  cp -a "$_stage/." "$pkgdir/usr/"
+  find "$pkgdir/usr" -type d -exec chmod 0755 {} +
+  find "$pkgdir/usr" -type f -exec chmod 0644 {} +
+  chmod 0755 "$pkgdir/usr/bin/rayburst" \
+             "$pkgdir/usr/bin/aria2-next" \
+             "$pkgdir/usr/bin/rayburst-browser-launcher"
+}

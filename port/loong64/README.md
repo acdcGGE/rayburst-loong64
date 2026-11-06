@@ -6,7 +6,7 @@ Vue 3 + Rust) 移植到 **loongarch64 / Deepin 25** 的可复现构建配方。
 上游只发布 6 个桌面目标的二进制（macOS x64/arm64、Windows x64/arm64、Linux
 x64/arm64），其中 `aria2-next` sidecar 是仓库里直接 check-in 的预编译 ELF。
 本配方不改业务代码，用「本地工具链 + 最小补丁 + 旁路打包」的方式让同一棵
-源码树在龙芯上编译出可安装的 `.deb`。
+源码树在龙芯上编译出可安装的 `.deb` 与 Arch Linux `.pkg.tar.zst`。
 
 > **本仓库布局**：`acdcGGE/rayburst-loong64` 的 `main` 分支保持上游源码不变；
 > 移植配方放在 **`port/loong64` 分支的 `port/loong64/` 目录**。也可以把本目录
@@ -21,6 +21,7 @@ x64/arm64），其中 `aria2-next` sidecar 是仓库里直接 check-in 的预编
 | Node | >= 22.13（**apt 只有 20**，见下） |
 | CMake | >= 3.25、Ninja、Perl、GCC C++20 |
 | 系统包 | WebKitGTK 4.1 等开发头文件（一次性 `sudo apt install`，本机已装齐） |
+| 打包工具 | `bsdtar`(libarchive) + `zstd` + `gzip`；本机 3.7.4 / 1.5.7 已具备 |
 | 磁盘 | 约 4 GiB（aria2-next 全量 superbuild + Rust target） |
 
 ## 快速开始
@@ -68,9 +69,11 @@ python3 tools/probe.py
 ./scripts/03-frontend.sh
 ./scripts/04-engine.sh --fallback    # 用系统 aria2c 占位（功能降级，见 PORTING.md）
 ./scripts/06-package-deb.sh          # 产出 dist/rayburst_<ver>_loong64.deb
+./scripts/07-package-arch.sh        # 产出 dist/rayburst-<pkgver>-1-loong64.pkg.tar.zst
 ```
 
-产物：`dist/rayburst_<version>_loong64.deb`。
+产物：`dist/rayburst_<version>_loong64.deb`（90 MiB）与
+`dist/rayburst-4.1.2_beta.2-1-loong64.pkg.tar.zst`（120 MiB），两者 payload 字节级一致。
 
 ## 脚本
 
@@ -84,7 +87,36 @@ python3 tools/probe.py
 | `scripts/04-engine.sh` | 编译 aria2-next 并安装成 `aria2-next-loongarch64-unknown-linux-gnu` |
 | `scripts/05-build.sh` | `cargo-tauri build --no-bundle`（**必须** `--no-bundle`） |
 | `scripts/06-package-deb.sh` | 按 tauri-bundler 的布局手工生成 `Architecture: loong64` 的 deb |
-| `scripts/build-all.sh` | 串行执行以上全部 |
+| `scripts/07-package-arch.sh` | 复用同一 stage，生成带 `.PKGINFO` / `.MTREE` 的 pacman 包 |
+| `arch/PKGBUILD` | 给 Loong Arch Linux 维护者用 `makepkg` 重建的等价模板（本机未实跑） |
+| `scripts/build-all.sh` | 串行执行以上全部，产出 deb + `.pkg.tar.zst` |
+
+## Arch Linux 包（Loong Arch Linux）
+
+`07-package-arch.sh` 复用 `06-package-deb.sh` 的 `dist/deb-stage/`，所以 deb 与
+`.pkg.tar.zst` 的 payload **字节级一致**（实测 13 个文件 sha256 全部相同）。
+
+| 项 | 值 | 依据 |
+| --- | --- | --- |
+| 文件名 | `rayburst-4.1.2_beta.2-1-loong64.pkg.tar.zst` | Arch `pkgver` 不允许连字符：上游 `4.1.2-beta.2` → `4.1.2_beta.2`；`pkgrel=1` |
+| 架构 | `loong64` | Loong Arch Linux 的 pacman 把 `uname -m=loongarch64` 映射为 CARCH `loong64` |
+| 元数据 | `.PKGINFO` + `.MTREE`（gzip 的 mtree） | 与 makepkg 相同的字段与 mtree 关键字集 |
+| `.BUILDINFO` | 不生成 | 它描述 PKGBUILD 构建环境；本配方归档已编译产物，pacman 不要求此文件 |
+| 属主 / 权限 | root:root；目录 755、文件 644、3 个可执行文件 755 | `bsdtar --uid 0 --gid 0`，mtree 与归档一致 |
+
+在 Loong Arch Linux 上安装：
+
+```bash
+sudo pacman -U rayburst-4.1.2_beta.2-1-loong64.pkg.tar.zst
+```
+
+`depend` 默认 `webkit2gtk-4.1 gtk3 libsoup3 librsvg libglvnd hicolor-icon-theme`，
+按 `ldd` 主程序的直接依赖映射。托盘走 Rust `ksni`/D-Bus，不链接
+`libayatana-appindicator`，所以与 deb 的 `Depends` 不同。移植仓库包名有差异时覆盖：
+
+```bash
+ARCH_DEPENDS="webkit2gtk-4.1 gtk3 libsoup3 ..." ./scripts/07-package-arch.sh
+```
 
 ## 为什么需要这些补丁
 
